@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="./jquery-3.1.0.min.js"></script>
+  <script src="../src/jqueryForm.js"></script>
+</head>
+<body>
+  <input type="text" id="phone-input">
+  <input type="text" id="name-input">
+  <input type="text" id="address-input">
+  <button type="button" id="get-btn">获取表单数据</button>
+  <button type="button" id="set-btn">设置表单数据</button>
+  <button type="button" id="verify-btn">验证表单数据</button>
+  <script>
+    var userInfoForm = new JqueryForm([
+      {
+        name: 'phone',
+        id: 'phone-input',
+        defaultValue: '10086',
+        rule: function (value) {
+          if (Math.random() < 0.5) {
+            return '不正确';
+          } else {
+            return true;
+          }
+        }
+      },
+      {
+        name: 'name',
+        id: 'name-input',
+        defaultValue: '移动'
+      },
+      {
+        name: 'address',
+        id: 'address-input',
+        defaultValue: '移动大厦'
+      }
+    ]);
+
+    $('#get-btn').on('click', function () {
+      console.log(userInfoForm.getFormData());
+    });
+
+    $('#set-btn').on('click', function () {
+      userInfoForm.setFormData({
+        phone: '10086-2',
+        name: '移动-2',
+        address: '移动大厦-2'
+      });
+    });
+
+    $('#verify-btn').on('click', function () {
+      var result = userInfoForm.verify(userInfoForm.getFormData());
+      if (result.success !== true) {
+        alert(result.errorMessage);
+      }
+    });
+  </script>
+</body>
+</html>

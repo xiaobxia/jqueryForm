@@ -1,19 +1,4 @@
 (function ($) {
-  // var config = [
-  //   {
-  //     name: '',
-  //     id: '',
-  //     defaultValue: '',
-  //     rule: function (value) {
-  //       if (value > 0) {
-  //         return true;
-  //       } else {
-  //         return '不能小于0';
-  //       }
-  //     }
-  //   }
-  // ];
-
   function verifyConfigItem(item) {
     if (!item.name) {
       console.error('缺少name');

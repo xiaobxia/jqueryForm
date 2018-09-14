@@ -13,18 +13,23 @@
   <button type="button" id="get-btn">获取表单数据</button>
   <button type="button" id="set-btn">设置表单数据</button>
   <button type="button" id="verify-btn">验证表单数据</button>
+  <div>phone: <span id="phone-text"></span></div>
   <script>
     var userInfoForm = new JqueryForm([
       {
         name: 'phone',
         id: 'phone-input',
         defaultValue: '10086',
+        bindTextId: 'phone-text',
         rule: function (value) {
           if (Math.random() < 0.5) {
             return '不正确';
           } else {
             return true;
           }
+        },
+        onChange: function (value) {
+          console.log(value);
         }
       },
       {

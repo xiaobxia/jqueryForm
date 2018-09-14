@@ -14,6 +14,8 @@
   <button type="button" id="set-btn">设置表单数据</button>
   <button type="button" id="verify-btn">验证表单数据</button>
   <div>phone: <span id="phone-text"></span></div>
+  <div>name: <span id="name-text"></span></div>
+  <div>address: <span id="address-text"></span></div>
   <script>
     var userInfoForm = new JqueryForm([
       {
@@ -35,12 +37,20 @@
       {
         name: 'name',
         id: 'name-input',
-        defaultValue: '移动'
+        defaultValue: '移动',
+        bindTextId: 'name-text',
+        onChange: function (value) {
+          console.log(value);
+        }
       },
       {
         name: 'address',
         id: 'address-input',
-        defaultValue: '移动大厦'
+        defaultValue: '移动大厦',
+        bindTextId: 'address-text',
+        onChange: function (value) {
+          console.log(value);
+        }
       }
     ]);
 

@@ -72,6 +72,11 @@
         alert(result.errorMessage);
       }
     });
+
+    setTimeout(function () {
+      console.log(userInfoForm.find('name'));
+      userInfoForm.find('name').attr('disabled', true);
+    }, 2000);
   </script>
 </body>
 </html>

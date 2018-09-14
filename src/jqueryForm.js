@@ -84,6 +84,11 @@
         }
       }
     },
+    find: function(name) {
+      if (this.inputMap[name]) {
+        return this.inputMap[name].$el;
+      }
+    },
     verify: function (data) {
       var inputMap = this.inputMap;
       for (var key in data) {

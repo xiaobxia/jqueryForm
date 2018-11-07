@@ -1,4 +1,44 @@
 (function ($) {
+  //input事件用这个限制，blur事件后再判断是不是以.结尾
+  function formatMoney (money) {
+    var rawMoney = money
+    if (!money) {
+      return false
+    }
+    let info = {
+      should: true,
+      text: ''
+    }
+    var notNumberReg = /[^\d.]/g
+    //移除非数字和.
+    if (notNumberReg.test(money)) {
+      money = money.replace(notNumberReg, '')
+    }
+    //不能有012这种
+    if ((money.indexOf('0') === 0) && (money.indexOf('.') !== 1)) {
+      money = money.substr(0, 1)
+    }
+    //不能是.开头
+    if (money.indexOf('.') === 0) {
+      money = ''
+    }
+    //防止多.
+    if (money.split('.').length > 2) {
+      money = money.split('.').slice(0, 2).join('.')
+    }
+    //需要限制在两位
+    var LimitReg = /^\d+\.\d{3,}$/
+    if (money && LimitReg.test(money)) {
+      money = (Math.floor(money * 100) / 100).toFixed(2).toString()
+    }
+    if (rawMoney === money) {
+      return false
+    } else {
+      info.text = money
+      return info
+    }
+  }
+
   function verifyConfigItem(item) {
     if (!item.name) {
       console.error('缺少name');

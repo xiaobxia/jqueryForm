@@ -169,7 +169,7 @@ function numberFormat(number, len) {
   }
   //不能有012这种
   if ((number.indexOf('0') === 0)) {
-    number = number.substr(0, 1)
+    number = number.substr(1)
   }
   if (number.length > len) {
     number = number.substr(0, len)
